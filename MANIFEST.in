@@ -1,2 +1,2 @@
 include README.rst
-recursive-include ckanext/userautoadd *.html *.json *.js *.less *.css *.mo
+recursive-include ckanext/userautoaddtogroup *.html *.json *.js *.less *.css *.mo

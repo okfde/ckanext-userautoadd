@@ -8,35 +8,35 @@ class TestUserCreate(helpers.FunctionalTestBase):
     def setup(self):
         super(TestUserCreate, self).setup()
         self.admin = factories.User(name='admin')
-        self.organization = factories.Organization(
+        self.group = factories.Group(
             name='mapaction', user=self.admin)
 
     @classmethod
     def _apply_config_changes(cls, cfg):
         plugins = set(cfg['ckan.plugins'].strip().split())
-        plugins.add('userautoadd')
+        plugins.add('userautoaddtogroup')
         cfg['ckan.plugins'] = ' '.join(plugins)
 
-    @helpers.change_config('ckan.userautoadd.organization_name',
+    @helpers.change_config('ckan.userautoaddtogroup.group_name',
                            'mapaction')
-    @helpers.change_config('ckan.userautoadd.organization_role',
+    @helpers.change_config('ckan.userautoaddtogroup.group_role',
                            'editor')
-    def test_new_user_added_to_organization(self):
+    def test_new_user_added_to_group(self):
         user = helpers.call_action(
             'user_create',
             email='test@example.com',
             name='testuser',
             password='abc123')
 
-        organization = helpers.call_action(
-            'organization_show',
+        group = helpers.call_action(
+            'group_show',
             context={'user': self.admin['name']},
-            id=self.organization['id'])
+            id=self.group['id'])
 
-        org_users = {o['name']: o for o in organization['users']}
+        group_users = {o['name']: o for o in group['users']}
 
-        nose.tools.assert_true(user['name'] in org_users)
+        nose.tools.assert_true(user['name'] in group_users)
 
-        org_user = org_users[user['name']]
+        group_user = group_users[user['name']]
 
-        nose.tools.assert_equal(org_user['capacity'], 'editor')
+        nose.tools.assert_equal(group_user['capacity'], 'editor')

@@ -1,35 +1,36 @@
-===================
-ckanext-userautoadd
-===================
+==========================
+ckanext-userautoaddtogroup
+==========================
 
-CKAN plugin to add new users to an existing organization automatically.
+CKAN plugin to add new users to an existing group automatically. This takes care of the 
+scenario that users should be able to add datasets to any group.
 
 This plugin implements the ``user_create`` action to add users to an existing
-organization with a given role (both specified in the configuration - See Config
+group with a given role (both specified in the configuration - See Config
 Settings below).
 
 ------------
 Requirements
 ------------
 
-Tested with CKAN v2.5.2
+Tested with CKAN v2.6
 
 ------------
 Installation
 ------------
 
 
-To install ckanext-userautoadd:
+To install ckanext-userautoaddtogroup:
 
 1. Activate your CKAN virtual environment, for example::
 
      . /usr/lib/ckan/default/bin/activate
 
-2. Install the ckanext-userautoadd Python package into your virtual environment::
+2. Install the ckanext-userautoaddtogroup Python package into your virtual environment::
 
-     pip install ckanext-userautoadd
+     pip install ckanext-userautoaddtogroup
 
-3. Add ``userautoadd`` to the ``ckan.plugins`` setting in your CKAN
+3. Add ``userautoaddtogroup`` to the ``ckan.plugins`` setting in your CKAN
    config file (by default the config file is located at
    ``/etc/ckan/default/production.ini``).
 
@@ -44,22 +45,22 @@ Config Settings
 
 ::
 
-    # The organization to which new users are added
-    ckan.userautoadd.organization_name = my_organization
+    # The group to which new users are added
+    ckan.userautoaddtogroup.group_name = my_organization
 
     # The role the new users will have
-    ckan.userautoadd.organization_role = editor
+    ckan.userautoaddtogroup.group_role = editor
 
 
 ------------------------
 Development Installation
 ------------------------
 
-To install ckanext-userautoadd for development, activate your CKAN virtualenv and
+To install ckanext-userautoaddtogroup for development, activate your CKAN virtualenv and
 do::
 
-    git clone https://github.com/aptivate/ckanext-userautoadd.git
-    cd ckanext-userautoadd
+    git clone https://github.com/aptivate/ckanext-userautoaddtogroup.git
+    cd ckanext-userautoaddtogroup
     python setup.py develop
     pip install -r dev-requirements.txt
 
@@ -75,15 +76,15 @@ To run the tests, do::
 To run the tests and produce a coverage report, first make sure you have
 coverage installed in your virtualenv (``pip install coverage``) then run::
 
-    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.userautoadd --cover-inclusive --cover-erase --cover-tests
+    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.userautoaddtogroup --cover-inclusive --cover-erase --cover-tests
 
 
----------------------------------------
-Registering ckanext-userautoadd on PyPI
----------------------------------------
+----------------------------------------------
+Registering ckanext-userautoaddtogroup on PyPI
+----------------------------------------------
 
-ckanext-userautoadd should be availabe on PyPI as
-https://pypi.python.org/pypi/ckanext-userautoadd. If that link doesn't work, then
+ckanext-userautoaddtogroup should be availabe on PyPI as
+https://pypi.python.org/pypi/ckanext-userautoaddtogroup. If that link doesn't work, then
 you can register the project on PyPI for the first time by following these
 steps:
 
@@ -107,11 +108,11 @@ steps:
        git push --tags
 
 
-----------------------------------------------
-Releasing a New Version of ckanext-userautoadd
-----------------------------------------------
+-----------------------------------------------------
+Releasing a New Version of ckanext-userautoaddtogroup
+-----------------------------------------------------
 
-ckanext-userautoadd is availabe on PyPI as https://pypi.python.org/pypi/ckanext-userautoadd.
+ckanext-userautoaddtogroup is availabe on PyPI as https://pypi.python.org/pypi/ckanext-userautoaddtogroup.
 To publish a new version to PyPI follow these steps:
 
 1. Update the version number in the ``setup.py`` file.
@@ -136,6 +137,7 @@ To publish a new version to PyPI follow these steps:
 -----
 About
 -----
+This is a minor modification of the CKAN Extension userautoadd:
 Copyright (c) 2016 `MapAction <http://mapaction.org>`_. Developed by `Aptivate <http://aptivate.org>`_.
 
 Development of v1 of this plugin was funded by `ECHO <http://ec.europa.eu/echo>`_.

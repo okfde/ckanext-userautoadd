@@ -10,18 +10,18 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-userautoadd''',
+    name='''ckanext-userautoaddtogroup''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='1.0.1',
 
-    description='''CKAN extension to add new users to groups and organisations''',
+    description='''CKAN extension to add new users to groups''',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/aptivate/ckanext-userautoadd',
+    url='https://github.com/okfde/ckanext-userautoaddtogroup',
 
     # Author details
     author='''Aptivate''',
@@ -49,7 +49,7 @@ setup(
 
 
     # What does your project relate to?
-    keywords='''CKAN user organization group''',
+    keywords='''CKAN user group''',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -79,7 +79,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        userautoadd=ckanext.userautoadd.plugin:UserautoaddPlugin
+        userautoaddtogroup=ckanext.userautoaddtogroup.plugin:UserautoaddtogroupPlugin
 	[babel.extractors]
 	ckan = ckan.lib.extract:extract_ckan
     ''',

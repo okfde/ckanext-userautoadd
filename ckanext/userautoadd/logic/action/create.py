@@ -8,21 +8,21 @@ import ckan.plugins.toolkit as toolkit
 def user_create(context, data_dict):
     user = ckan_user_create(context, data_dict)
 
-    org_name = config.get('ckan.userautoadd.organization_name', '')
-    role = config.get('ckan.userautoadd.organization_role', '')
+    group_name = config.get('ckan.userautoaddtogroup.group_name', '')
+    role = config.get('ckan.userautoaddtogroup.group_role', '')
 
     try:
-        toolkit.get_action('organization_show')(
+        toolkit.get_action('group_show')(
             context, {
-                'id': org_name,
+                'id': group_name,
             }
         )
     except logic.NotFound:
         return user
 
-    toolkit.get_action('organization_member_create')(
+    toolkit.get_action('group_member_create')(
         context, {
-            'id': org_name,
+            'id': group_name,
             'username': user['name'],
             'role': role,
         }
